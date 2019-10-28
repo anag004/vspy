@@ -31,6 +31,12 @@ class Vector(abc.ABC):
     def zero():
         # Return the ZERO vector
         pass
+
+    @abc.abstractclassmethod
+    def linearlyIndependent(arr):
+        # Returns true iff the set of vectors is linearly independent
+        # Check if all the vectors are compatible
+        pass
     
 class Scalar(abc.ABC):
     @abc.abstractclassmethod

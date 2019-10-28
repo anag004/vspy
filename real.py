@@ -1,6 +1,8 @@
 # Defines n dimensional vectors over euclidean space
 
 import vector
+import numpy as np 
+from numpy.linalg import matrix_rank
 
 class R(vector.Scalar):
     def __init__(self, x):
@@ -123,7 +125,28 @@ class Rn(vector.Vector):
     def zero(n):
         return Rn([0 for i in range(n)])
 
-    
+    @staticmethod
+    def linearlyIndependent(arr):
+        if (len(arr) == 0):
+            return True 
+        
+        n = arr[0].n
+        m = len(arr)
+        
+        for v in arr:
+            if (not isinstance(v, Rn)) or v.n != n:
+                return NotImplemented
+            
+        # If the number of vectors is greater than the dimension of the ambient space return False
+        if m > n:
+            return False 
+
+        M = np.zeros((m, n))
+        for i in range(m):
+            M[i] = arr[i].data 
+        
+        return matrix_rank(M) == m 
+
 
     
         
