@@ -61,7 +61,7 @@ class VectorSpace:
         # Adds two vector spaces 
         return VectorSpace(self.basis + other.basis)
 
-    def __mul__(self, other):
+    def __xor__(self, other):
         # Gets the intersection of two vector spaces
         # Choose vectors from other.basis which lie in self
         newBasis = []
@@ -76,5 +76,4 @@ class VectorSpace:
     def nullSpace():
         # Returns the null space
         return VectorSpace([])
-
 

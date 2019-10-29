@@ -49,11 +49,11 @@ class TestVectorSpace(unittest.TestCase):
         # Test that xy and x together are not xyz
         self.assertNotEqual(self.xyz, self.x + self.xy)
 
-    def test_mul(self):
+    def test_xor(self):
         # Test that intersection of xy and yz is y
-        self.assertEqual(self.xy * self.yz, self.y)
+        self.assertEqual(self.xy ^ self.yz, self.y)
         # Test that the intersection of xy and xyz is not x
-        self.assertNotEqual(self.xyz * self.xy, self.x)
+        self.assertNotEqual(self.xyz ^ self.xy, self.x)
 
     def test_null(self):
         # Test that the addition of self.xy and null is self.xy
