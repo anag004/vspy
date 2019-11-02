@@ -57,8 +57,7 @@ class R(vector.Scalar):
         else: 
             return R(self.data / other.data)
 
-    @staticmethod
-    def zero():
+    def zero(self):
         return R(0)
     
     @staticmethod

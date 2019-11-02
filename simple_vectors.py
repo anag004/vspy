@@ -47,12 +47,12 @@ class SimpleVector(Vector):
             return NotImplemented
         return self.data == other.data
 
-    @staticmethod
-    def zero(n, zeroElement):
-        return SimpleVector([zeroElement for i in range(n)])
+    def zero(self):
+        zeroElement = self.data[0].zero()
+        return SimpleVector([zeroElement for i in range(self.n)])
 
     @staticmethod
-    def linearlyIndependent(arr, zeroElement):
+    def linearlyIndependent(arr):
         if (len(arr) == 0):
             return True 
         
@@ -68,7 +68,7 @@ class SimpleVector(Vector):
             return False 
 
         # Make a matrix of zeros
-        zeroVector = arr[0].zero(n, zeroElement) 
+        zeroVector = arr[0].zero()
         M = [zeroVector.data for j in range(m)]
 
         for i in range(m):

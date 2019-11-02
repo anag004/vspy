@@ -1,4 +1,4 @@
-# Module defines the abstract classes Vector and Scalar with methods that child classes must implement
+# Module defines the  Vector and abstract class Scalar with methods that child classes must implement
 
 import abc
 
@@ -27,9 +27,8 @@ class Vector(abc.ABC):
         # Check that the other is also a Vector of the same type
         pass
 
-    @staticmethod
     @abc.abstractmethod
-    def zero():
+    def zero(self):
         # Return the ZERO vector
         pass
 
@@ -84,7 +83,6 @@ class Scalar(abc.ABC):
         # Check that other is a Scalar of the same type and is nonzero
         pass
 
-    @staticmethod
     @abc.abstractmethod
     def zero():
         # Return the ZERO SCALAR
