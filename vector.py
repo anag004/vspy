@@ -84,7 +84,7 @@ class Scalar(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def zero():
+    def zero(self):
         # Return the ZERO SCALAR
         pass 
 
