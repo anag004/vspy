@@ -49,6 +49,14 @@ class R(vector.Scalar):
             return NotImplemented
         return self.data <= other.data
 
+    def __truediv__(self, other):
+        if not isinstance(other, R):
+            return NotImplemented
+        elif (other == self.zero()):
+            raise Exception("Cannot divide by zero")
+        else: 
+            return R(self.data / other.data)
+
     @staticmethod
     def zero():
         return R(0)

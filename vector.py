@@ -52,35 +52,37 @@ class Scalar(abc.ABC):
         # Check that other is also a Scalar of the same type
         pass 
 
-    @abc.abstractmethod
     def __eq__(self, other):
         # Compare two scalars
-        # Check that the other is also a Scalar of the same type
-        pass 
-
-    @abc.abstractmethod
-    def __gt__(self, other):
-        # Return true iff self > other 
-        # Check that the other is also a Scalar of the same type
-        pass 
+        return (self >= other) and (other >= self)
 
     @abc.abstractmethod
     def __ge__(self, other):
-        # Return true iff self >= other
+        # Return true iff self >= other 
         # Check that the other is also a Scalar of the same type
         pass 
 
-    @abc.abstractmethod
+    def __gt__(self, other):
+        # Return true iff self > other
+        return self >= other and not (other >= self) 
+
     def __lt__(self, other):
         # Return true iff self < other
-        # Check that the other is also a Scalar of the same type
-        pass 
+        return other > self 
 
-    @abc.abstractmethod
     def __le__(self, other):
         # Return true iff self <= other
-        # Check that the other is also a Scalar of the same type
-        pass 
+        return other >= self
+
+    def __sub__(self, other):
+        # Return self added to the inverse of the other
+        return self + self.inv(other)
+
+    @abc.abstractmethod
+    def __truediv__(self, other):
+        # Return self / other
+        # Check that other is a Scalar of the same type and is nonzero
+        pass
 
     @staticmethod
     @abc.abstractmethod
