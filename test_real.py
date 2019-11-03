@@ -37,6 +37,12 @@ class TestRealVectors(unittest.TestCase):
     def test_zero(self):
         self.assertEqual(R(10), R(10) + self.c.zero())
 
+    def test_mul(self):
+        self.assertEqual(R(10), R(5) * R(2))
+
+    def test_rmul(self):
+        self.assertEqual(R(10), 2 * R(5))
+
     def test_sub(self):
         self.assertEqual(R(10), R(12) - R(2))
 

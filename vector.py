@@ -51,6 +51,17 @@ class Scalar(abc.ABC):
         # Check that other is also a Scalar of the same type
         pass 
 
+    def __rmul__(self, other):
+        # If other is an integer, add self to itself other times
+        if not isinstance(other, int):
+            return NotImplemented
+        else:
+            result = self.zero()
+            # Add self to result other times
+            for i in range(other):
+                result = result + self
+            return self
+
     def __eq__(self, other):
         # Compare two scalars
         return (self >= other) and (other >= self)

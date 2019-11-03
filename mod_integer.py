@@ -29,7 +29,13 @@ class Zm(Scalar):
             return NotImplemented
         else:
             return Zm(self.data * other.data, self.m)
-        
+    
+    def __rmul__(self, other):
+        if not isinstance(other, int):
+            return NotImplemented
+        else:
+            return Zm(self.data * other, self.m)
+
     def __eq__(self, other):
         if (not isinstance(other, Zm)):
             return NotImplemented

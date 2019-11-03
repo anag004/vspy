@@ -14,6 +14,9 @@ class TestModInteger(unittest.TestCase):
     def test_mul(self):
         self.assertEqual(Zm(5, 31), Zm(9, 31) * Zm(4, 31))
 
+    def test_rmul(self):
+        self.assertEqual(Zm(5, 31), 9 * Zm(4, 31))
+
     def test_sub(self):
         self.assertEqual(Zm(1, 4), Zm(9, 4), Zm(12, 4))
 

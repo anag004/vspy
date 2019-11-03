@@ -24,6 +24,12 @@ class R(vector.Scalar):
             return NotImplemented
         return R(self.data * other.data)
 
+    def __rmul__(self, other):
+        if not isinstance(other, int):
+            return NotImplemented
+        else:
+            return R(self.data * other)
+
     def __eq__(self, other):
         if not isinstance(other, R):
             return NotImplemented
