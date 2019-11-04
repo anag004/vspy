@@ -50,6 +50,15 @@ class TestPolyUnivarReal(unittest.TestCase):
         self.assertFalse(a.linearlyIndependent([a, b, c]))
         self.assertFalse(a.linearlyIndependent([a, b, PolyUnivar([])]))
 
+    def test_pow(self):
+        a = PolyUnivar([R(1), R(2), R(3)])
+        b = PolyUnivar([R(2), R(3), R(4)])
+        c = PolyUnivar([R(2), R(7), R(16), R(17), R(12)])
+        d = PolyUnivar([R(2), R(7), R(16), R(17), R(13)])
+        self.assertEqual(c, a ** b)
+        self.assertEqual(c, b ** a)
+        self.assertNotEqual(d, a ** b)
+
 class TestPolyUnivarModInteger(unittest.TestCase):
     def test_eq(self):
         a = PolyUnivar([Zm(1, 31), Zm(2, 31), Zm(3, 31)])
@@ -94,6 +103,14 @@ class TestPolyUnivarModInteger(unittest.TestCase):
         self.assertFalse(a.linearlyIndependent([a, b, c]))
         self.assertFalse(a.linearlyIndependent([a, b, PolyUnivar([])]))
 
+    def test_pow(self):
+        a = PolyUnivar([Zm(1, 7), Zm(2, 7), Zm(3, 7)])
+        b = PolyUnivar([Zm(2, 7), Zm(3, 7), Zm(4, 7)])
+        c = PolyUnivar([Zm(2, 7), Zm(0, 7), Zm(2, 7), Zm(3, 7), Zm(5, 7)])
+        d = PolyUnivar([Zm(2, 7), Zm(0, 7), Zm(2, 7), Zm(3, 7), Zm(6, 7)])
+        self.assertEqual(c, a ** b)
+        self.assertEqual(c, b ** a)
+        self.assertNotEqual(d, a ** b)    
 
 if __name__ == "__main__":
     unittest.main()

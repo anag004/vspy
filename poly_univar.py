@@ -115,4 +115,39 @@ class PolyUnivar(Vector):
 
         return matrix_rank(M) == m
 
+    # This is polynomial multiplication (not strictly a vector operation)
+    def __pow__(self, other):
+        if not isinstance(other, PolyUnivar):
+            return NotImplemented
+        else:
+            if (self.deg == 0 or other.deg == 0):
+                return PolyUnivar([])
+            
+            zeroElement = self.coeffs[0].zero()
+            res_deg = self.deg + other.deg 
+            res_coeffs = []
+
+            for deg in range(res_deg):
+                coeff_value = zeroElement
+                for i in range(deg + 1):
+                    if (i < self.deg and deg - i < other.deg):
+                        coeff_value += self.coeffs[self.deg - i - 1] * other.coeffs[other.deg - deg + i - 1]
+                res_coeffs.append(coeff_value)
+            
+            res_coeffs.reverse()
+
+            # Remove leading zeros 
+            ctr = 0
+            ctr_max = len(res_coeffs)
+
+            while(ctr < ctr_max):
+                if res_coeffs[ctr] == zeroElement:
+                    ctr+=1
+                else:
+                    break 
+
+            res_coeffs = res_coeffs[ctr:]
+            
+            return PolyUnivar(res_coeffs)
+
 
