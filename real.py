@@ -1,7 +1,6 @@
 # Defines real scalars
 
 import vector
-import numpy as np 
 from utils import matrix_rank
 
 class R(vector.Scalar):

@@ -2,6 +2,7 @@
 
 from vector import Vector
 from utils import matrix_rank
+from copy import deepcopy
 
 class SimpleVector(Vector):
     def __init__(self, x):
@@ -72,7 +73,7 @@ class SimpleVector(Vector):
         M = [zeroVector.data for j in range(m)]
 
         for i in range(m):
-            M[i] = arr[i].data 
+            M[i] = deepcopy(arr[i].data)
         
         return matrix_rank(M) == m 
 

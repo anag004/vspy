@@ -1,12 +1,13 @@
 import unittest
 from vspy import VectorSpace
-from real import Rn, R
+from real import R
+from simple_vectors import SimpleVector
 
 class TestVectorSpace(unittest.TestCase):
     def setUp(self):
-        self.i = Rn([1, 0, 0])
-        self.j = Rn([0, 1, 0])
-        self.k = Rn([0, 0, 1])
+        self.i = SimpleVector([R(1), R(0), R(0)])
+        self.j = SimpleVector([R(0), R(1), R(0)])
+        self.k = SimpleVector([R(0), R(0), R(1)])
         self.x = VectorSpace([self.i])
         self.y = VectorSpace([self.j])
         self.z = VectorSpace([self.k])
